@@ -9,7 +9,7 @@ tasks:
     cmds:
       - echo "Building Docker image {{.IMAGE_NAME}}..."
       - docker build -t {{.IMAGE_NAME}} .
-      - echo "Docker image built: {{.IMAGE_NAME}}"
+      - echo "Docker image built - {{.IMAGE_NAME}}"
 
   docker_run:
     desc: "Run Docker container"
