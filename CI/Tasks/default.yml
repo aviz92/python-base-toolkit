@@ -1,0 +1,19 @@
+version: "3"
+
+vars:
+  VENV_SITE_PACKAGES:
+    sh: "python -c 'import os, site; print(os.path.abspath(site.getsitepackages()[0]))'"
+
+
+tasks:
+  default:
+    cmds:
+      - echo "VENV_SITE_PACKAGES is set to - {{.VENV_SITE_PACKAGES}}"
+      - echo "Available tasks:"
+      - task --list
+
+  check_env:
+    desc: "Print environment variables"
+    cmds:
+        - echo "Environment Variables:"
+        - env | sort

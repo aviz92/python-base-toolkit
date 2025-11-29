@@ -1,0 +1,13 @@
+version: "3"
+
+tasks:
+  lint:
+    desc: "Run pre-commit hooks (linting & formatting)"
+    cmds:
+      - |
+        if command -v pre-commit > /dev/null 2>&1; then
+            echo "Running pre-commit hooks..."
+            pre-commit run --all-files
+        else
+            echo "pre-commit is not installed. Please run 'pip install pre-commit'"
+        fi

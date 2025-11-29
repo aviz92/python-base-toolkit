@@ -1,4 +1,5 @@
 include requirements.txt
 include README.md
 include LICENSE
-include scripts
+include CI/Tasks/*
+include Taskfile.yml

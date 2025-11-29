@@ -1,0 +1,9 @@
+version: "3"
+
+vars:
+  VENV_SITE_PACKAGES:
+    sh: "python -c 'import os, site; print(os.path.abspath(site.getsitepackages()[0]))'"
+
+
+includes:
+  main: CI/Tasks/main.yml
