@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "python-base-toolkit"
-version = "0.0.8"
+version = "0.0.9"
 description = "A Python package for managing pytest plugins."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -42,10 +42,14 @@ Homepage = "https://github.com/aviz92/python-base-toolkit"
 Repository = "https://github.com/aviz92/python-base-toolkit"
 Issues = "https://github.com/aviz92/python-base-toolkit/issues"
 
+[tool.setuptools]
+include-package-data = true
+zip-safe = false
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["python_base_toolkit*"]
 namespaces = false
 
 [tool.setuptools.package-data]
-ci = ["python_base_toolkit/ci/**/*"]
+python_base_toolkit = ["ci/**/*"]
