@@ -47,3 +47,13 @@ tasks:
       - echo "🔁 Reinstalling UV..."
       - curl -sSfL https://astral.sh/uv/install.sh | sh
       - echo "🎉 UV reinstalled!"
+
+  install_dependencies:
+    desc: Install all dependencies.
+    deps:
+      - install-uv
+    cmds:
+      - task: clean
+      - pwd
+      - rm uv.lock || true
+      - "{{.UV_BIN}} sync"
