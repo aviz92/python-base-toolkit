@@ -13,7 +13,7 @@ def get_project_path_by_name(project_name: str) -> str:
 
 
 def get_project_path_by_file(markers: set = None) -> Path:
-    markers = markers or {".git", ".gitignore", "setup.py", "pyproject.toml", "LICENSE", "README.md"}
+    markers = markers or {".git", "setup.py", "pyproject.toml", "LICENSE", "README.md"}
     for marker in markers:
         path = Path(__file__).resolve()
         for parent in path.parents:
