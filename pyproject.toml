@@ -47,5 +47,5 @@ where = ["."]
 include = ["python_base_toolkit*"]
 namespaces = false
 
-[tool.setuptools.packages-data]
+[tool.setuptools.package-data]
 ci = ["ci/**/*"]
