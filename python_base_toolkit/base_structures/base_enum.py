@@ -15,7 +15,7 @@ class EnumMixin:
 
     @classmethod
     def to_list(cls: type[E]) -> list[Any]:
-        return list(map(lambda c: c.value, cls))
+        return [c.value for c in cls]
 
     @classmethod
     def to_dict(cls: type[E]) -> dict:
@@ -23,11 +23,11 @@ class EnumMixin:
 
     @classmethod
     def names(cls: type[E]) -> list[str]:
-        return list(map(lambda c: c.name, cls))
+        return [c.name for c in cls]
 
     @classmethod
     def values(cls: type[E]) -> list[Any]:
-        return list(map(lambda c: c.value, cls))
+        return [c.value for c in cls]
 
     @classmethod
     def from_value(cls: type[E], value: Any) -> list[E]:

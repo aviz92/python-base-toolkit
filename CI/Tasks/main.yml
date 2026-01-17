@@ -6,6 +6,7 @@ vars:
 
 
 includes:
+  vars: vars.yml
   default: default.yml
   dependencies: dependencies.yml
   deploy: deploy.yml

@@ -1,6 +1,5 @@
 version: "3"
 
-
 tasks:
   uv_bin:  # for CI ; command -v uv is the basic command to find uv if exists in PATH
     desc: "Find the path to UV"
@@ -21,11 +20,13 @@ tasks:
     desc: "Check if UV is installed"
     cmds:
       - |
-        UV_PATH=$(task -s uv_bin)
+        UV_PATH=$(task -s main:install:uv_bin)
         if [ -n "$UV_PATH" ]; then
-            echo "UV is installed at: $UV_PATH"
+          echo "UV is installed at: $UV_PATH"
+          exit 0  # success
         else
-            echo "UV is not installed."
+          echo "UV is not installed."
+          exit 1  # failure
         fi
 
   install_uv:
@@ -33,7 +34,7 @@ tasks:
     cmds:
       - echo "Installing UV..."
       - |
-        if ! command -v uv > /dev/null 2>&1; then
+        if [ -n "$(task -s main:install:uv_bin)" ]; then
             curl -sSfL https://astral.sh/uv/install.sh | sh
         else
             echo "UV is already installed at $(command -v uv)"

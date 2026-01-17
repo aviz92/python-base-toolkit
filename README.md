@@ -38,6 +38,9 @@ pip install python-toolkit
   - shorten_url
   - venv_details
 
+- Tasks Pack
+  - ...
+
 ---
 
 ## 🤝 Contributing
