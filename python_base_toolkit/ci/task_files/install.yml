@@ -1,7 +1,7 @@
 version: "3"
 
 tasks:
-  uv_bin:  # for CI ; command -v uv is the basic command to find uv if exists in PATH
+  uv_bin:  # for ci ; command -v uv is the basic command to find uv if exists in PATH
     desc: "Find the path to UV"
     silent: true  # do not print the command output unless needed
     cmds:
