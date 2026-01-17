@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "python-base-toolkit"
-version = "0.0.7"
+version = "0.0.8"
 description = "A Python package for managing pytest plugins."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -48,4 +48,4 @@ include = ["python_base_toolkit*"]
 namespaces = false
 
 [tool.setuptools.package-data]
-ci = ["ci/**/*"]
+ci = ["python_base_toolkit/ci/**/*"]
