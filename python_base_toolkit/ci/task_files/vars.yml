@@ -22,8 +22,6 @@ vars:
   DOT_VENV_PYTHON_PATH:
     sh: |
       find "$VIRTUAL_ENV/lib" -maxdepth 1 -type d -name "python*" | head -n1 | sed 's|^.*/\.venv/|.venv/|'
-  VENV_SITE_PACKAGES:
-    sh: "python -c 'import os, site; print(os.path.abspath(site.getsitepackages()[0]))'"
 
   GIT_BRANCH:
       sh: git branch --show-current
