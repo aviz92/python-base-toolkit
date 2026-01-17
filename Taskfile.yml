@@ -4,4 +4,4 @@ dotenv:
   - .env
 
 includes:
-  main: python_base_toolkit/ci/task_files/includes.yml
+  infra: python_base_toolkit/ci/task_files/includes.yml
