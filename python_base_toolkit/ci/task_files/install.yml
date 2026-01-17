@@ -1,7 +1,7 @@
 version: "3"
 
 tasks:
-  uv_bin:  # for ci ; command -v uv is the basic command to find uv if exists in PATH
+  uv-bin:  # for ci ; command -v uv is the basic command to find uv if exists in PATH
     desc: "Find the path to UV"
     silent: true  # do not print the command output unless needed
     cmds:
@@ -16,11 +16,11 @@ tasks:
             echo ""
         fi
 
-  check_uv:
+  check-uv:
     desc: "Check if UV is installed"
     cmds:
       - |
-        UV_PATH=$(task -s main:install:uv_bin)
+        UV_PATH=$(task -s main:install:uv-bin)
         if [ -n "$UV_PATH" ]; then
           echo "UV is installed at: $UV_PATH"
           exit 0  # success
@@ -29,26 +29,26 @@ tasks:
           exit 1  # failure
         fi
 
-  install_uv:
+  install-uv:
     desc: "Install UV"
     cmds:
       - echo "Installing UV..."
       - |
-        if [ -n "$(task -s main:install:uv_bin)" ]; then
+        if [ -n "$(task -s main:install:uv-bin)" ]; then
             curl -sSfL https://astral.sh/uv/install.sh | sh
         else
             echo "UV is already installed at $(command -v uv)"
         fi
       - echo "🎉 UV installed."
 
-  reinstall_uv:
+  reinstall-uv:
     desc: "Force reinstall UV"
     cmds:
       - echo "🔁 Reinstalling UV..."
       - curl -sSfL https://astral.sh/uv/install.sh | sh
       - echo "🎉 UV reinstalled!"
 
-  install_dependencies:
+  install-dependencies:
     desc: Install all dependencies.
     deps:
       - install-uv

@@ -1,7 +1,7 @@
 version: "3"
 
 tasks:
-  docker_build:
+  docker-build:
     desc: "Build Docker image for the project"
     params:
       IMAGE_NAME:
@@ -11,7 +11,7 @@ tasks:
       - docker build -t {{.IMAGE_NAME}} .
       - echo "Docker image built - {{.IMAGE_NAME}}"
 
-  docker_run:
+  docker-run:
     desc: "Run Docker container"
     params:
       IMAGE_NAME:
@@ -25,7 +25,7 @@ tasks:
       - docker run -d --name {{.CONTAINER_NAME}} -p {{.PORT}}:{{.PORT}} {{.IMAGE_NAME}}
       - echo "Container {{.CONTAINER_NAME}} is running on port {{.PORT}}"
 
-  docker_clean_all:
+  docker-clean-all:
     desc: "Remove old Docker containers and images"
     cmds:
       - echo "Stopping all running containers..."
@@ -36,7 +36,7 @@ tasks:
       - docker images -q | xargs -r docker rmi
       - echo "Docker cleanup completed."
 
-  docker_clean_project:
+  docker-clean-project:
     desc: "Clean Docker resources for a specific project"
     params:
       PROJECT_NAME:
@@ -51,7 +51,7 @@ tasks:
       - docker volume ls -q --filter "name={{.PROJECT_NAME}}" | xargs -r docker volume rm
       - echo "Project cleanup completed."
 
-  docker_clean_old:
+  docker-clean-old:
     desc: "Clean old/inactive Docker containers and images"
     params:
       AGE_HOURS:

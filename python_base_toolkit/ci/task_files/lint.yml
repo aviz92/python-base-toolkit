@@ -1,7 +1,7 @@
 version: "3"
 
 tasks:
-  pre_commit:
+  pre-commit:
     desc: Pre-commit all files.
     cmds:
       - |

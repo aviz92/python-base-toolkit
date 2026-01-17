@@ -1,14 +1,14 @@
 version: "3"
 
 tasks:
-  pip_update:
+  pip-update:
     desc: "Update all Python dependencies"
     cmds:
       - echo "Updating Python dependencies..."
       - pip install --upgrade -r requirements.txt
       - echo "Dependencies updated."
 
-  update_uv:
+  update-uv:
     desc: "Install or update UV binary"
     cmds:
       - |
@@ -19,7 +19,7 @@ tasks:
             echo "UV not found. Pleasing install UV."
         fi
 
-  poetry_update:
+  poetry-update:
     desc: "Update all Python dependencies using Poetry"
     cmds:
       - |
