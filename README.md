@@ -38,8 +38,7 @@ pip install python-toolkit
   - shorten_url
   - venv_details
 
-- Tasks Pack
-  - ...
+- Tasks Pack for Go-Task to provide a consistent interface for common development commands
 
 ---
 

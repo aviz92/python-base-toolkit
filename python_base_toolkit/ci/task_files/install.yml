@@ -56,4 +56,5 @@ tasks:
       - task: clean
       - pwd
       - rm uv.lock || true
+      - uv cache clean
       - "{{.UV_BIN}} sync"
