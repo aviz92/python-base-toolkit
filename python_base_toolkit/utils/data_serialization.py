@@ -8,11 +8,14 @@ from typing import Any
 
 import pandas as pd
 from custom_python_logger import get_logger
+from pydantic import BaseModel
 
 logger = get_logger(__name__)
 
 
 def default_serialize(obj: object) -> object:
+    if isinstance(obj, BaseModel):
+        return obj.model_dump()
     if isinstance(obj, type):
         return obj.__name__
     if is_dataclass(obj) and not isinstance(obj, type):

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "python-base-toolkit"
-version = "1.0.0"
+version = "1.0.1"
 description = "A Python package for managing pytest plugins."
 readme = "README.md"
 requires-python = ">=3.12"
@@ -27,6 +27,7 @@ dependencies = [
     "pandas>=2.3.3",
     "pathlib>=1.0.1",
     "pre-commit>=4.5.0",
+    "pydantic>=2.12.5",
     "pyfiglet>=1.0.4",
     "python-dotenv>=1.2.1",
     "pyyaml>=6.0.3",
