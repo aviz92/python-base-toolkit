@@ -22,6 +22,10 @@ class EnumMixin:
         return {member.name: member.value for member in cls}
 
     @classmethod
+    def to_json(cls) -> str:
+        return json.dumps(cls.to_dict())
+
+    @classmethod
     def names(cls: type[E]) -> list[str]:
         return [c.name for c in cls]
 
@@ -40,10 +44,6 @@ class EnumMixin:
     @classmethod
     def has_value(cls: type[E], value: Any) -> bool:
         return any(member.value == value for member in cls)
-
-    @classmethod
-    def to_json(cls) -> str:
-        return json.dumps(cls.to_dict())
 
 
 class BaseEnum(EnumMixin, Enum):
