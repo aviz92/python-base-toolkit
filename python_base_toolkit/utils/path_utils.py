@@ -24,4 +24,4 @@ def get_project_path_by_file(markers: set[str] | None = None) -> Path:
         for marker in markers:
             if (parent / marker).exists():
                 return parent
-    raise RuntimeError(f'Project root with one of the markers: "{markers}" not found.')
+    raise FileNotFoundError(f'Project root with one of the markers: "{markers}" not found.')
