@@ -5,7 +5,9 @@ from typing import Any
 
 from custom_python_logger import get_logger
 
-logger = get_logger(__name__)
+from python_base_toolkit.const import LOGGER_NAME
+
+logger = get_logger(LOGGER_NAME)
 
 
 class Timer:

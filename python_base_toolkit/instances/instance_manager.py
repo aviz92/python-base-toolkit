@@ -1,9 +1,11 @@
 from custom_python_logger.logger import get_logger
 
+from python_base_toolkit.const import LOGGER_NAME
+
 
 class InstanceManager:
     def __init__(self) -> None:
-        self.logger = get_logger(__class__.__name__)
+        self.logger = get_logger(LOGGER_NAME)
         self._instances = []
 
     def add(self, instance: object) -> None:
@@ -31,7 +33,7 @@ class InstanceManager:
 def main() -> None:
     class SomeInstance:
         def __init__(self, add_to_instance_manager: bool = False) -> None:
-            self.logger = get_logger(__class__.__name__)
+            self.logger = get_logger(LOGGER_NAME)
 
             if add_to_instance_manager:
                 instance_manager.add(self)  # pylint: disable=E0601

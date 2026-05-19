@@ -10,7 +10,9 @@ import pandas as pd
 from custom_python_logger import get_logger
 from pydantic import BaseModel
 
-logger = get_logger(__name__)
+from python_base_toolkit.const import LOGGER_NAME
+
+logger = get_logger(LOGGER_NAME)
 
 
 def default_serialize(obj: object) -> object:

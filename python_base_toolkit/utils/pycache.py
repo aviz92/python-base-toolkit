@@ -3,9 +3,10 @@ from pathlib import Path
 
 from custom_python_logger.logger import get_logger
 
+from python_base_toolkit.const import LOGGER_NAME
 from python_base_toolkit.utils.path_utils import get_project_path_by_file
 
-logger = get_logger(__name__)
+logger = get_logger(LOGGER_NAME)
 
 
 def delete_pycache_folder(root_dir: Path = None, ignored_dirs: set = None) -> None:
