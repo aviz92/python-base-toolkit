@@ -10,7 +10,7 @@ import pandas as pd
 from custom_python_logger import get_logger
 from pydantic import BaseModel
 
-from python_base_toolkit.consts import LOGGER_NAME
+from python_base_toolkit.consts.general import LOGGER_NAME
 
 logger = get_logger(LOGGER_NAME)
 
