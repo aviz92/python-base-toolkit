@@ -4,7 +4,7 @@ import re
 
 from custom_python_logger import get_logger
 
-from python_base_toolkit.const import LOGGER_NAME
+from python_base_toolkit.consts import LOGGER_NAME
 from python_base_toolkit.consts.operating_system import Platform
 
 logger = get_logger(LOGGER_NAME)
