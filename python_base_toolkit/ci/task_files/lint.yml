@@ -9,3 +9,6 @@ tasks:
         set -a
         set +a
         "{{.UV_BIN}}" run pre-commit run --all-files
+      - |
+        echo "Cleaning up..."
+        task: infra:deploy:clean
