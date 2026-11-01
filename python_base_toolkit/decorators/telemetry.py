@@ -13,12 +13,17 @@ logger = get_logger(LOGGER_NAME)
 
 
 def report_telemetry(
-    func: Callable[..., Any], start_time: datetime.datetime, end_time: datetime.datetime, *args: Any, **kwargs: Any
+    *,
+    func: Callable[..., Any],
+    start_time: datetime.datetime,
+    end_time: datetime.datetime,
+    call_args: tuple[Any, ...],
+    call_kwargs: dict[str, Any],
 ) -> None:
     data = {
         "function_name": func.__name__,
-        "args": args,
-        "kwargs": kwargs,
+        "args": call_args,
+        "kwargs": call_kwargs,
         "start_time": start_time.isoformat(),
         "end_time": end_time.isoformat(),
         "timestamp": time.time(),
@@ -37,7 +42,7 @@ def report_func_telemetry(func: Callable[..., Any]) -> Callable[..., Any]:
         start_time = datetime.datetime.now(datetime.UTC)
         result = func(*args, **kwargs)
         end_time = datetime.datetime.now(datetime.UTC)
-        report_telemetry(*args, func=func, start_time=start_time, end_time=end_time, **kwargs)
+        report_telemetry(func=func, start_time=start_time, end_time=end_time, call_args=args, call_kwargs=kwargs)
         return result
 
     return wrapper

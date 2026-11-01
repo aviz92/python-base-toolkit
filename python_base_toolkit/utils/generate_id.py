@@ -25,13 +25,13 @@ def generate_id_by_date() -> str:
 
 def generate_id_by_time() -> str:
     timestamp = datetime.now()
-    id_ = timestamp.strftime("%H%M%S%m")
+    id_ = timestamp.strftime("%H%M%S%f")
     logger.info(f"id is: {id_}")
     return id_
 
 
 def generate_id_by_date_and_time() -> str:
     timestamp = datetime.now()
-    id_ = timestamp.strftime("%Y%m%d%H%M%S%m")
+    id_ = timestamp.strftime("%Y%m%d%H%M%S%f")
     logger.info(f"id is: {id_}")
     return id_

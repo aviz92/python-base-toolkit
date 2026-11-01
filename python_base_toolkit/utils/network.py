@@ -128,7 +128,7 @@ def check_ping_from_linux(ip_address: str, number_of_ping: int = 4) -> bool:
 
 def check_ping_from_windows(ip_address: str, number_of_ping: int = 4) -> bool:
     try:
-        if os.system(f"ping -c {number_of_ping} {ip_address}") == 0:
+        if os.system(f"ping -n {number_of_ping} {ip_address}") == 0:
             return True
         return False
     except Exception as e:
