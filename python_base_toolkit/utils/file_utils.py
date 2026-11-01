@@ -83,13 +83,13 @@ class _FileCompression:
 
         if archive_path.endswith((".tar.gz", ".tgz")):
             with tarfile.open(archive_path, "r:gz") as tar:
-                tar.extractall(path=output_dir)
+                tar.extractall(path=output_dir, filter="data")
         elif archive_path.endswith(".tar.bz2"):
             with tarfile.open(archive_path, "r:bz2") as tar:
-                tar.extractall(path=output_dir)
+                tar.extractall(path=output_dir, filter="data")
         elif archive_path.endswith(".tar"):
             with tarfile.open(archive_path, "r") as tar:
-                tar.extractall(path=output_dir)
+                tar.extractall(path=output_dir, filter="data")
         elif archive_path.endswith(".zip"):
             with zipfile.ZipFile(archive_path, "r") as zip_ref:
                 zip_ref.extractall(output_dir)
