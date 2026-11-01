@@ -4,11 +4,6 @@ tasks:
   pre-commit:
     desc: Pre-commit all files.
     cmds:
-      - |
-        echo "Running pre-commit hooks on all files..."
-        set -a
-        set +a
-        "{{.UV_BIN}}" run pre-commit run --all-files
-      - |
-        echo "Cleaning up..."
-        task: infra:deploy:clean
+      - echo "Running pre-commit hooks on all files..."
+      - '"{{.UV_BIN}}" run pre-commit run --all-files'
+      - defer: { task: ":infra:deploy:clean" }

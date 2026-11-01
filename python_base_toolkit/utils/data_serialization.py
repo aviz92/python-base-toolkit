@@ -1,4 +1,5 @@
 import json
+from collections.abc import Callable
 from dataclasses import is_dataclass
 from datetime import date, datetime, time
 from decimal import Decimal
@@ -15,25 +16,23 @@ from python_base_toolkit.consts.general import LOGGER_NAME
 logger = get_logger(LOGGER_NAME)
 
 
+_TYPE_SERIALIZERS: tuple[tuple[type | tuple[type, ...], Callable[[Any], object]], ...] = (
+    (BaseModel, lambda obj: obj.model_dump()),
+    (type, lambda obj: obj.__name__),
+    (Enum, lambda obj: obj.value),
+    ((set, tuple), list),
+    ((datetime, date, time), lambda obj: obj.isoformat()),
+    (Decimal, float),
+    (Path, str),
+)
+
+
 def default_serialize(obj: object) -> object:
-    if isinstance(obj, BaseModel):
-        return obj.model_dump()
-    if isinstance(obj, type):
-        return obj.__name__
-    if is_dataclass(obj) and not isinstance(obj, type):
+    if is_dataclass(obj) and not isinstance(obj, type | BaseModel):
         return obj.__dict__
-    if isinstance(obj, Enum):
-        return obj.value
-    if isinstance(obj, set):
-        return list(obj)
-    if isinstance(obj, tuple):
-        return list(obj)
-    if isinstance(obj, datetime | date | time):
-        return obj.isoformat()
-    if isinstance(obj, Decimal):
-        return float(obj)
-    if isinstance(obj, Path):
-        return str(obj)
+    for types, serializer in _TYPE_SERIALIZERS:
+        if isinstance(obj, types):
+            return serializer(obj)
     if obj is pd.NA:
         return None
     logger.error(f"Object is not serializable: {obj}")

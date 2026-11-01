@@ -1,7 +1,6 @@
-from typing import Any, TypeVar
-from pydantic import BaseModel
+from typing import Any
 
-T = TypeVar("T", bound="PydanticMixin")
+from pydantic import BaseModel
 
 
 class BasePydanticModel(BaseModel):
@@ -10,11 +9,11 @@ class BasePydanticModel(BaseModel):
     def __str__(self) -> str:
         return f"{self.__class__.__name__}({self.model_dump()})"
 
-    def to_dict(self, **kwargs) -> dict[str, Any]:
+    def to_dict(self, **kwargs: Any) -> dict[str, Any]:
         """Wrapper for model_dump."""
         return self.model_dump(**kwargs)
 
-    def to_json(self, **kwargs) -> str:
+    def to_json(self, **kwargs: Any) -> str:
         """Wrapper for model_dump_json."""
         return self.model_dump_json(**kwargs)
 

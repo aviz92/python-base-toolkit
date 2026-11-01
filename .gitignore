@@ -191,6 +191,13 @@ docker-compose.override.yml
 CLAUDE.md
 CLAUDE.local.md
 
+# Marketplace install outputs (derived — sources live in skills/ and rules/)
+.agents/
+.codex/
+.gemini/
+.github/instructions/
+GEMINI.md
+
 # ============================================================
 # Logs & Reports
 # ============================================================
